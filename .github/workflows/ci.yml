@@ -21,3 +21,9 @@ jobs:
 
       - name: Say Hello
         run: echo "Hello !!!"
+
+      - name: Docker Compose
+        run: docker compose up -d
+
+      - name: Checking backend
+        run: curl localhost:5000
