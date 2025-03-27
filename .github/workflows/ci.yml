@@ -23,7 +23,14 @@ jobs:
         run: echo "Hello !!!"
 
       - name: Docker Compose
-        run: docker compose up -d
+        run:
+          docker compose up -d
+          echo "Composing Containers..."
+          sleep 20
 
-      - name: Checking db
+      - name: Run test inside web container
         run: docker compose exec -it web curl localhost:5000
+
+      - name: Shutdown Docker Compose
+        if: always()
+        run: docker compose down
